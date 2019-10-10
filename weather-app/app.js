@@ -1,4 +1,5 @@
 const request = require('request')
+const geocode = require('./utils/geocode')
 //
 // const url = 'https://api.darksky.net/forecast/114ce9727c99f6fb5af2204f51b9501b/37.8267,-122.4233'
 //
@@ -15,17 +16,26 @@ const request = require('request')
 
 // geocoding
 
-const mapBoxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoia3NoZXdleSIsImEiOiJjazFnb29mcmgwMjVsM2l0ZjhnOGJzMDN5In0.edL7638VFPHORKBsovXREw"
+// const mapBoxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoia3NoZXdleSIsImEiOiJjazFnb29mcmgwMjVsM2l0ZjhnOGJzMDN5In0.edL7638VFPHORKBsovXREw"
+//
+// request({ url: mapBoxURL, json: true }, (error, response) => {
+//
+//   if (error) {
+//     console.log("Unable to connect to location services")
+//   } else if (response.body.features.length === 0) {
+//     console.log("Unable to find location")
+//   } else {
+//   const latitude = response.body.features[0].center[1]
+//   const longitude = response.body.features[0].center[0]
+//   console.log(latitude, longitude)
+// }
+// })
 
-request({ url: mapBoxURL, json: true }, (error, response) => {
 
-  if (error) {
-    console.log("Unable to connect to location services")
-  } else if (response.body.features.length == 0) {
-    console.log("Unable to find location")
-  } else {
-  const latitude = response.body.features[0].center[1]
-  const longitude = response.body.features[0].center[0]
-  console.log(latitude, longitude)
-}
+
+geocode("Los Angeles", (error, data) => {
+  console.log('Error', error)
+  console.log('Data', data)
 })
+
+module.exports = geocode

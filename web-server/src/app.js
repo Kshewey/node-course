@@ -53,6 +53,20 @@ app.get('/weather', (req, res) => {
 
 
 
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+      title: '404 Missing article',
+      message: "Sorry, the article you're looking for isn't here"
+    })
+})
+
+app.get('*', (req, res) =>{
+  res.render('404' , {
+    title: '404 Missing page',
+    message: "Sorry, cannot find the page"
+  })
+})
+
 
 
 app.listen(3000, () => {

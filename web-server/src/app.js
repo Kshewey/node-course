@@ -45,9 +45,29 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-  res.send({
+if(!req.query.address) {
+  return res.send({
+    error: 'You must provide a location'
+  })
+}
+res.send({
     forecast: "It's hot for October",
-    location: "Right here"
+    location: "Right here",
+    address: req.query.address
+  })
+})
+
+
+
+app.get('/proudcts', (req, res) => {
+  if(!req.query.search) {
+    return res.send({
+      error: 'You must provide a search term'
+    })
+  }
+  console.log(req.query.search)
+  res.send({
+    products: []
   })
 })
 
@@ -59,6 +79,8 @@ app.get('/help/*', (req, res) => {
       message: "Sorry, the article you're looking for isn't here"
     })
 })
+
+
 
 app.get('*', (req, res) =>{
   res.render('404' , {

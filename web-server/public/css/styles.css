@@ -40,3 +40,23 @@ header a {
 .portrait {
     width: 250px;
 }
+
+input {
+  border: 1px solid #cccccc;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #888888;
+  background-color: grey;
+  color: white;
+  padding: 8px;
+  transition: .3s
+}
+
+
+button:hover {
+  background: white;
+  color: black;
+}

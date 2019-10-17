@@ -54,7 +54,7 @@ if(!req.query.address) {
   })
 }
 
-geocode(req.query.address, (error, { latitude, longitude, location} ) => {
+geocode(req.query.address, (error, { latitude, longitude, location} = {}) => {
   if (error) {
     return res.send({ error })
   }
@@ -76,7 +76,7 @@ geocode(req.query.address, (error, { latitude, longitude, location} ) => {
 
 
 
-          
+
 
 // res.send({
 //     forecast: "It's hot for October",
